@@ -2212,6 +2212,7 @@ class MegatronLatentDiffusion(NLPAdapterModelMixin, MegatronBaseModel):
                 if not cfg.get('capture_cudagraph_iters'):
                     cfg.capture_cudagraph_iters = -1
                 if cfg.get('unet_config') and cfg.get('unet_config').get('use_te_dpa'):
+                    logging.warning("Using Flash Attention instead of TE-DotProductAttention in inference.")
                     cfg.unet_config.use_te_dpa = False
                     cfg.unet_config.use_flash_attention = True
 
